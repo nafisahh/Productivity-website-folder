@@ -1,117 +1,404 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog page</title>
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        *{
-            padding:0;margin: 0;
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+      .blogHeader {
+        background-image: url("images/Blog\ ppic.jpg");
+        height: 80vh;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+      }
+      .content {
+        /*  sstyle=" padding: 3px"max-width: 800px; */
+        margin: auto;
+        background: #ffffff;
+        padding: 20px;
+        
+        border-radius: 8px;
+      }
+
+      ul {
+        margin-left: 20px;
+      }
+
+            .container {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      
+      }
+
+      @media (min-width: 576px) {
+        .container {
+          max-width: 540px;
+          margin: 0 auto;
+
         }
-        .blogHeader{
-            background-image:url('/Blog\ ppic.jpg'); 
-            height: 80vh;
-            background-repeat:no-repeat;
-            background-position: center;
-            background-size: cover;
+      }
+
+      @media (min-width: 768px) {
+        .container {
+          max-width: 720px;
+          margin: 0 auto;
+        }
+      }
+
+      @media (min-width: 992px) {
+        .container {
+          max-width: 960px;
+          margin: 0 auto;
+        }
+      }
+
+      @media (min-width: 1200px) {
+        .container {
+          max-width: 1140px;
+          margin: 0 auto;
+        }
+      }
+
+      @media (min-width: 1400px) {
+        .container {
+          max-width: 1320px;
+          margin: 0 auto;
+        }
+      }
+
+      nav {
+        background-color: #fbeef3;
+        box-shadow: 0px 0px 3px 0px #074c37;
+        border-radius: 6px;
+      }
+
+      .navbar-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .brand h3 {
+        font-family: Montserrat, sans-serif;
+        font-size: 20px;
+        color: #074c37;
+        margin: 0;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 20px;
+      }
+
+      .nav-links li a {
+        text-decoration: none;
+        color: #074c37;
+        padding: 0.8rem 1.2rem;
+        transition: background-color 0.3s, color 0.3s;
+        border-radius: 4px;
+      }
+
+      .nav-links li a:hover {
+        background-color: #edadc7;
+        color: #ffffff;
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+      }
+
+      .hamburger div {
+        width: 25px;
+        height: 3px;
+         margin-right: 10px;
+        background-color: #074c37;
+        transition: all 0.3s ease;
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          position: absolute;
+          top: 70px;
+          right: 0;
+          background-color: #fbeef3;
+          width: 100%;
+          flex-direction: column;
+          align-items: center;
+          gap: 15px;
+          padding: 20px 0;
+          display: none;
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+          border-radius: 0 0 6px 6px;
         }
 
-           body {
-            font-family: "Montserrat", sans-serif;
-        }
-           .content {
-            /*  sstyle=" padding: 3px"max-width: 800px; */
-            margin: auto;
-            background: #ffffff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            border-radius: 8px;
+        .nav-links.show {
+          display: flex;
         }
 
-        ul {
-            margin-left: 20px;
+        .hamburger {
+          display: flex;
         }
-
+      }
     </style>
-</head>
-<body>
-     <nav
-           style="display: flex;justify-content: space-between; background-color:#FBEEF3; padding-top: 10px; box-shadow: 0px 0px 3px 0px #074C37; border-radius: 6px;">
-            <div style="display: flex;">
-                <img src="/icons8-lightning-bolt-48.png" alt="" width="50" height="50">
-                <h3
-                    style="justify-content: space-between;font-family: Montserrat; font-size: 20px; margin-top: 10px;text-decoration: none; color: #074C37;">
-                    Productivity Queen</h3>
-            </div>
-            <div>
-                <ul style="display: flex; list-style: none; padding-bottom: 10px;">
-                    <li style="padding:5px 55px;"><a href="/index.html" style="text-decoration: none; color: #074C37;">Home</a>
-                    </li>
-                    <li style="padding:5px 55px;"><a href="" style="text-decoration: none; color: #074C37;">About</a>
-                    </li>
-                    <li style="padding:5px 55px;"><a href="" style="text-decoration: none; color: #074C37;">Service</a>
-                    </li>
-                    <li style="padding:5px 55px;"><a href="/blog.html" style="text-decoration: none; color: #074C37;">Blog</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    <header class="blogHeader" style="display: flex; align-items: center; justify-content: center;">
-<h1 style="color: white; font-size: 57px;">
-    Top 10 tips on how to be productive
-</h1>
+  </head>
+  <body>
+    <nav>
+      <div class="container navbar-container">
+        <div class="brand">
+          <img
+            src="images/icons8-lightning-bolt-48.png"
+            alt="Logo"
+            width="50"
+            height="50"
+          />
+          <h3>Productivity Queen</h3>
+        </div>
+
+        <div class="hamburger" onclick="toggleMenu()">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="">About</a></li>
+          <li><a href="#services">Service</a></li>
+          <li><a href="/blog.html">Blog</a></li>
+        </ul>
+      </div>
+    </nav>
+    <header
+      class="blogHeader"
+      style="display: flex; align-items: center; justify-content: center"
+    >
+      <h1 style="color: white; font-size: 57px; padding: 15px">
+        Top 10 tips on how to be productive
+      </h1>
     </header>
     <section>
+      <div class="container">
+
         <div class="content">
-    <h1 style="padding: 10px;">Boost Your Productivity: Simple Strategies for Success</h1>
-
-    <h2 style="padding: 10px;">Introduction</h2>
-    <p style="padding: 10px;">Productivity isn't just about doing more tasks; it's about accomplishing meaningful goals efficiently and effectively. Let's explore strategies to enhance your productivity without feeling overwhelmed.</p>
-
-    <h2 style="padding: 10px;">1. Prioritize Your Tasks</h2>
-    <p style="padding: 10px;">Clearly defining what's urgent and important helps streamline your focus.</p>
-    <ul>
-        <li>Use tools like Eisenhower Matrix.</li>
-        <li>Focus on tasks that align with your long-term goals.</li>
-    </ul>
-
-    <h2 style="padding: 10px;">2. Time Management Techniques</h2>
-    <p>Effective time management can significantly boost your productivity.</p>
-    <ul>
-        <li style=" padding: 3px"><strong>Pomodoro Technique:</strong> Work 25 minutes, then take a 5-minute break.</li>
-        <li style=" padding: 3px"><strong>Time Blocking:</strong> Allocate specific time slots for tasks in your calendar.</li>
-    </ul>
-
-    <h2 style="padding: 10px;">3. Minimize Distractions</h2>
-    <p style="padding: 10px;">Reducing interruptions can dramatically improve your focus.</p>
-    <ul>
-        <li>Turn off unnecessary notifications.</li>
-        <li>Create a dedicated workspace free from distractions.</li>
-    </ul>
-
-    <h2 style="padding: 10px;">4. Use Productivity Tools</h2>
-    <p style="padding: 10px;">Leveraging technology can streamline your workflow.</p>
-    <ul>
-        <li>Task management apps like ClickUp, Trello, or Todoist.</li>
-        <li>Note-taking apps such as Notion or Evernote.</li>
-    </ul>
-
-    <h2 style="padding: 10px;">5. Take Regular Breaks</h2>
-    <p style="padding: 10px;">Regular breaks can refresh your mind and maintain high productivity levels.</p>
-    <ul>
-        <li>Short breaks every hour to stretch or relax.</li>
-        <li>Longer breaks to disconnect completely.</li>
-    </ul>
-
-    <h2 style="padding: 10px;">Conclusion</h2>
-    <p style="padding: 10px;">Increasing productivity is achievable with intentional habits, effective strategies, and smart tools. Start small, stay consistent, and watch your efficiency soar.</p>
-</div>
+          <h1 style="padding: 10px">
+            Boost Your Productivity: Simple Strategies for Success
+          </h1>
+  
+          <h2 style="padding: 10px">Introduction</h2>
+          <p style="padding: 10px">
+            Productivity isn't just about doing more tasks; it's about
+            accomplishing meaningful goals efficiently and effectively. Let's
+            explore strategies to enhance your productivity without feeling
+            overwhelmed.
+          </p>
+  
+          <h2 style="padding: 10px">1. Prioritize Your Tasks</h2>
+          <p style="padding: 10px">
+            Clearly defining what's urgent and important helps streamline your
+            focus.
+          </p>
+          <ul>
+            <li>Use tools like Eisenhower Matrix.</li>
+            <li>Focus on tasks that align with your long-term goals.</li>
+          </ul>
+  
+          <h2 style="padding: 10px">2. Time Management Techniques</h2>
+          <p>
+            Effective time management can significantly boost your productivity.
+          </p>
+          <ul>
+            <li style="padding: 3px">
+              <strong>Pomodoro Technique:</strong> Work 25 minutes, then take a
+              5-minute break.
+            </li>
+            <li style="padding: 3px">
+              <strong>Time Blocking:</strong> Allocate specific time slots for
+              tasks in your calendar.
+            </li>
+          </ul>
+  
+          <h2 style="padding: 10px">3. Minimize Distractions</h2>
+          <p style="padding: 10px">
+            Reducing interruptions can dramatically improve your focus.
+          </p>
+          <ul>
+            <li>Turn off unnecessary notifications.</li>
+            <li>Create a dedicated workspace free from distractions.</li>
+          </ul>
+  
+          <h2 style="padding: 10px">4. Use Productivity Tools</h2>
+          <p style="padding: 10px">
+            Leveraging technology can streamline your workflow.
+          </p>
+          <ul>
+            <li>Task management apps like ClickUp, Trello, or Todoist.</li>
+            <li>Note-taking apps such as Notion or Evernote.</li>
+          </ul>
+  
+          <h2 style="padding: 10px">5. Take Regular Breaks</h2>
+          <p style="padding: 10px">
+            Regular breaks can refresh your mind and maintain high productivity
+            levels.
+          </p>
+          <ul>
+            <li>Short breaks every hour to stretch or relax.</li>
+            <li>Longer breaks to disconnect completely.</li>
+          </ul>
+  
+          <h2 style="padding: 10px">Conclusion</h2>
+          <p style="padding: 10px">
+            Increasing productivity is achievable with intentional habits,
+            effective strategies, and smart tools. Start small, stay consistent,
+            and watch your efficiency soar.
+          </p>
+        </div>
+      </div>
     </section>
-    
-</body>
+
+    <footer
+      style="
+        margin-top: 20px;
+        text-align: center;
+        background-color: #f9f9f9;
+        padding: 20px 0;
+        border-top: 1px solid #e5e5e5;
+      "
+    >
+      <div
+        class="container"
+        style="display: flex; justify-content: center; gap: 15px"
+      >
+        <a
+          href="https://www.linkedin.com/in/nafeesahhassan/"
+          target="_blank"
+          style="
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #edadc7;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          "
+          onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 6px 12px rgba(0,0,0,0.15)'"
+          onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px rgba(0,0,0,0.1)'"
+        >
+          <img
+            src="https://api.iconify.design/lucide:linkedin.svg"
+            alt="LinkedIn"
+            style="width: 24px; height: 24px"
+          />
+        </a>
+        <a
+          href="https://www.facebook.com/nafeesah.hassan"
+          target="_blank"
+          style="
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #edadc7;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          "
+          onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 6px 12px rgba(0,0,0,0.15)'"
+          onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px rgba(0,0,0,0.1)'"
+        >
+          <img
+            src="https://api.iconify.design/lucide:facebook.svg"
+            alt="Facebook"
+            style="width: 24px; height: 24px"
+          />
+        </a>
+        <a
+          href="https://x.com/"
+          target="_blank"
+          style="
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #edadc7;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          "
+          onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 6px 12px rgba(0,0,0,0.15)'"
+          onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px rgba(0,0,0,0.1)'"
+        >
+          <img
+            src="https://api.iconify.design/logos:x.svg"
+            alt="X"
+            style="width: 24px; height: 24px"
+          />
+        </a>
+        <a
+          href="https://www.instagram.com/virtsupport/"
+          target="_blank"
+          style="
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #edadc7;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          "
+          onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 6px 12px rgba(0,0,0,0.15)'"
+          onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px rgba(0,0,0,0.1)'"
+        >
+          <img
+            src="https://api.iconify.design/lucide:instagram.svg"
+            alt="Instagram"
+            style="width: 24px; height: 24px"
+          />
+        </a>
+      </div>
+    </footer>
+  </body>
+  <script>
+    function toggleMenu() {
+      const navLinks = document.querySelector(".nav-links");
+      navLinks.classList.toggle("show");
+    }
+  </script>
 </html>
