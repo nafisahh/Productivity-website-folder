@@ -1,130 +1,615 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Productivity coaching</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        body {
-            font-family: "Montserrat", sans-serif;
+      body {
+        font-family: "Montserrat", sans-serif;
+        overflow-x: hidden;
+      }
+
+      * {
+        /* outline: 1px solid red; */
+        box-sizing: border-box;
+        padding: 0px;
+        margin: 0px;
+      }
+
+      .container {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+   
+      }
+
+      @media (min-width: 576px) {
+        .container {
+          max-width: 540px;
+          margin: 0 auto;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .container {
+          max-width: 720px;
+           margin: 0 auto;
+        }
+      }
+
+      @media (min-width: 992px) {
+        .container {
+          max-width: 960px;
+           margin: 0 auto;
+        }
+      }
+
+      @media (min-width: 1200px) {
+        .container {
+          max-width: 1140px;
+           margin: 0 auto;
+        }
+      }
+
+      @media (min-width: 1400px) {
+        .container {
+          max-width: 1320px;
+           margin: 0 auto;
+        }
+        .header-content,.services {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 0.5rem;
+        }
+      }
+
+      nav {
+        background-color: #fbeef3;
+        box-shadow: 0px 0px 3px 0px #074c37;
+        border-radius: 6px;
+      }
+
+      .navbar-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0px;
+        margin: 0 auto;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .brand h3 {
+        font-family: Montserrat, sans-serif;
+        font-size: 20px;
+        color: #074c37;
+        margin: 0;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 20px;
+      }
+
+      .nav-links li a {
+        text-decoration: none;
+        color: #074c37;
+        padding: 0.8rem 1.2rem;
+        transition: background-color 0.3s, color 0.3s;
+        border-radius: 4px;
+      }
+
+      .nav-links li a:hover {
+        background-color: #edadc7;
+        color: #ffffff;
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+      }
+
+      .hamburger div {
+        width: 25px;
+        height: 3px;
+        background-color: #074c37;
+        transition: all 0.3s ease;
+        margin-right: 10px;
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          position: absolute;
+          top: 70px;
+          right: 0;
+          background-color: #fbeef3;
+          width: 100%;
+          flex-direction: column;
+          align-items: center;
+          gap: 15px;
+          padding: 20px 0;
+          display: none;
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+          border-radius: 0 0 6px 6px;
         }
 
-        * {
-            padding: 0px;
-            margin: 0px;
+        .nav-links.show {
+          display: flex;
         }
+
+        .hamburger {
+          display: flex;
+        }
+
+        .header-content,.services {
+          display: block;
+          margin: 3rem 0;
+        }
+      }
+
+    
+
+      .wave-container {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+      }
+
+      .wave {
+        position: absolute;
+        width: 200%;
+        height: 100%;
+        background: url("./images/wave.svg") repeat-x;
+        background-size: contain;
+        bottom: 0;
+        animation: waveMove 8s linear infinite;
+        opacity: 1;
+      }
+
+      .wave:nth-child(2) {
+        animation: waveMoveReverse 12s linear infinite;
+        opacity: 0.5;
+      }
+
+      @keyframes waveMove {
+        0% {
+          background-position-x: 0;
+        }
+        100% {
+          background-position-x: -1000px;
+        }
+      }
+
+      @keyframes waveMoveReverse {
+        0% {
+          background-position-x: 0;
+        }
+        100% {
+          background-position-x: 1000px;
+        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <nav
-            style="display: flex;justify-content: space-between; background-color:#FBEEF3; padding-top: 10px; box-shadow: 0px 0px 3px 0px #074C37; border-radius: 6px;">
-            <div style="display: flex;">
-                <img src="/icons8-lightning-bolt-48.png" alt="" width="50" height="50">
-                <h3
-                    style="justify-content: space-between;font-family: Montserrat; font-size: 20px; margin-top: 10px;text-decoration: none; color: #074C37;">
-                    Productivity Queen</h3>
+      <nav>
+        <div class="container navbar-container">
+          <div class="brand">
+            <img
+              src="images/icons8-lightning-bolt-48.png"
+              alt="Logo"
+              width="50"
+              height="50"
+            />
+            <h3>Productivity Queen</h3>
+          </div>
+
+          <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+
+          <ul class="nav-links">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="#services">Service</a></li>
+            <li><a href="/blog.html">Blog</a></li>
+          </ul>
+        </div>
+      </nav>
+      <section style="margin-top: 100px; position: relative">
+        <div class="container">
+          <div class="header-content" style="padding: 1rem;">
+            <div
+              style="display: flex; align-self: center; flex-direction: column"
+            >
+              <p
+                style="
+                  text-align: left;
+                  font-size: 1rem;
+                  line-height: 1.625;
+                  color: #6b7280;
+                "
+              >
+                At Productivity Queen, I help women like you break free from the
+                <br />
+                cycle of burnout,procrastination, and self-doubt so you can show
+                up with <br />
+                intention,get things done, and still have space for what matters
+                most.
+              </p>
+              <p style="margin-top: 60px">
+                <button
+                  style="
+                    display: flex;
+                    align-items: center;
+                    background-color: #edadc7;
+                    color: #ffffff;
+                    padding: 0.85rem 1.8rem;
+                    border-radius: 6px;
+                    border: none;
+                    cursor: pointer;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                    transition: background-color 0.3s ease, box-shadow 0.3s ease,
+                      transform 0.2s ease;
+                  "
+                  onmouseover="this.style.backgroundColor='#edadc7'; this.style.boxShadow='0 6px 12px rgba(0,0,0,0.15)'; this.style.transform='translateY(-2px)'"
+                  onmouseout="this.style.backgroundColor='#edadc7'; this.style.boxShadow='0 4px 6px rgba(0,0,0,0.1)'; this.style.transform='translateY(0)'"
+                  onmousedown="this.style.transform='scale(0.98)'"
+                  onmouseup="this.style.transform='translateY(-2px)'"
+                >
+                  Get Started <img src="/images/right.svg" alt="" />
+                </button>
+              </p>
             </div>
             <div>
-                <ul style="display: flex; list-style: none;">
-                    <li style="padding:5px 55px;"><a href="/index.html" style="text-decoration: none; color: #074C37;">Home</a>
-                    </li>
-                    <li style="padding:5px 55px;"><a href="" style="text-decoration: none; color: #074C37;">About</a>
-                    </li>
-                    <li style="padding:5px 55px;"><a href="" style="text-decoration: none; color: #074C37;">Service</a>
-                    </li>
-                    <li style="padding:5px 55px;"><a href="/blog.html" style="text-decoration: none; color: #074C37;">Blog</a>
-                    </li>
-                </ul>
+              <img
+                src="images/website pic 2.png"
+                alt=""
+                width="350"
+                height="350"
+                style="border-radius: 50%"
+              />
             </div>
-        </nav>
-        <section style="display: flex; justify-content: space-between;margin-top: 100px;">
-            <div style="display: flex; align-self: center; flex-direction: column;">
-                <p style="padding-left: 10px; font-size: 20px;">At Productivity Queen, I help women like you break free
-                    from the <br> cycle of burnout,procrastination,
-                    and self-doubt so you can show up with <br> intention,get things done, and still have space for what
-                    matters most.
-                </p>
-                <p style="margin-top: 20px;">
-                    <button
-                        style="margin-left: 10px; background-color:#EDADC7; padding: 15px 30px; border-radius: 10px; border: none; font-family: Monserrat; font-size: 20px; color: #074C37;  box-shadow: 0px 0px 3px 0px">Get
-                        Started</button>
-                </p>
-            </div>
-            <div> <img src="/website pic 2.png" alt="" width="350" height="350" style="border-radius: 10px;"> </div>
-        </section>
-
-    </header>
-    <section>
-        <h1 style="text-align: center; margin-top: 120px; ">Services</h1>
-        <div style="display: flex; justify-content: space-between;margin-top: 100px;">
-            <div style="display: flex; align-self: center; flex-direction: column;">
-
-                <div style="display: flex; justify-content: center; padding-bottom: 10px;">
-                    <img src="/icons8-face-to-face-64.png" alt="">
-                </div>
-                <div>
-                    <h4 style="text-align: center; padding-bottom: 5px; padding-left: 10px; ">
-                        One-on-one Services
-                    </h4>
-                    <p style="text-align: center; padding-left: 10px;">
-                        Unlock your full potential with personalized,one-on-one coaching designed to help you
-                        achieve <br>
-                        your goals, overcome obstacles, and grow with clarity and confidence.
-                    </p>
-                    <button></button>
-                </div>
-            </div>
-            <div style="display: flex; align-self: center; flex-direction: column;">
-
-                <div style="display: flex; justify-content: center; padding-bottom: 10px;">
-                    <img src="/icons8-group-of-people-48.png" alt="">
-                </div>
-                <div>
-                    <h4 style="text-align: center; padding-bottom: 5px; ">
-                        Group Services
-                    </h4>
-                    <p style="text-align: center;">
-                        Grow with others in a supportive, guided environment. <br> Group coaching combines expert guidance
-                        with shared learning to help you stay focused, motivated, and accountable.
-                    </p>
-                    <button></button>
-                </div>
-            </div>
-            <div style="display: flex; align-self: center; flex-direction: column;">
-
-                <div style="display: flex; justify-content: center; padding-bottom: 10px;">
-                    <img src="/icons8-face-to-face-64.png" alt="">
-                </div>
-                <div>
-                    <h4 style="text-align: center; padding-bottom: 5px;">
-                        Cooperate Services
-                    </h4>
-                    <p style="text-align: center;">
-                        Unlock your full potential with personalized, one-on-one coaching designed to help you
-                        achieve <br>
-                        your goals, overcome obstacles, and grow with clarity and confidence.
-                
-                    </p>
-                    <button></button>
-                </div>
-            </div>
-        </div>  
-    </section>
-    <footer style="margin-top: 10px; text-align: center;">
-        <div>
-       <a href="https://www.linkedin.com/in/nafeesahhassan/" target="_blank"><img src="https://api.iconify.design/lucide:linkedin.svg" alt="" style="width: 37px; padding:10px"></a>  
-       <a href="https://www.facebook.com/nafeesah.hassan" target="_blank"><img src="https://api.iconify.design/lucide:facebook.svg" alt="" style="width: 37px; padding:10px"></a>  
-       <a href="https://www.facebook.com/nafeesah.hassan" target="_blank"><img src="https://api.iconify.design/logos:x.svg" alt="" style="width: 37px; padding:10px"></a>  
-       <a href="https://www.instagram.com/virtsupport/#" target="_blank"><img src="https://api.iconify.design/lucide:instagram.svg" alt="" style="width: 37px; padding:10px"></a>  
+          </div>
         </div>
+
+        <div class="wave-container">
+          <div class="wave"></div>
+          <div class="wave"></div>
+        </div>
+      </section>
+    </header>
+    <section id="services">
+      <h1 style="text-align: center; margin-top: 100px; font-size: 2rem; margin-bottom: 2rem;">
+        Services
+      </h1>
+      <div class="container">
+        <div
+          class="services"
+        >
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              padding: 20px;
+              border-radius: 8px;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+              border-top: 3px solid transparent;
+              transition: all 0.3s ease;
+              background-color: #ffffff;
+              cursor: pointer;
+            "
+            onmouseover="this.style.borderTopColor='#edadc7'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.15)'"
+            onmouseout="this.style.borderTopColor='transparent'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'"
+          >
+            <div
+              style="
+                display: flex;
+                justify-content: start;
+                padding-bottom: 10px;
+              "
+            >
+              <img
+                src="images/icons8-face-to-face-64.png"
+                alt=""
+                style="
+                  width: 50px;
+                  height: 50px;
+                  border-radius: 50%;
+                  background-color: #edadc7;
+                  padding: 8px;
+                "
+              />
+            </div>
+            <div>
+              <h4
+                style="
+                  text-align: left;
+                  padding-bottom: 5px;
+                  font-size: 1.2rem;
+                  font-weight: 600;
+                  color: #1f2937;
+                "
+              >
+                One-on-one Services
+              </h4>
+              <p
+                style="
+                  text-align: left;
+                  font-size: 1rem;
+                  line-height: 1.6;
+                  color: #6b7280;
+                "
+              >
+                Unlock your full potential with personalized,one-on-one coaching
+                designed to help you achieve your goals, overcome obstacles, and
+                grow with clarity and confidence.
+              </p>
+            </div>
+          </div>
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              padding: 20px;
+              border-radius: 8px;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+              border-top: 3px solid transparent;
+              transition: all 0.3s ease;
+              background-color: #ffffff;
+              cursor: pointer;
+            "
+            onmouseover="this.style.borderTopColor='#edadc7'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.15)'"
+            onmouseout="this.style.borderTopColor='transparent'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'"
+          >
+            <div
+              style="
+                display: flex;
+                justify-content: start;
+                padding-bottom: 10px;
+              "
+            >
+              <img
+                src="images/icons8-group-of-people-48.png"
+                alt=""
+                style="
+                  width: 50px;
+                  height: 50px;
+                  border-radius: 50%;
+                  background-color: #edadc7;
+                  padding: 8px;
+                "
+              />
+            </div>
+            <div>
+              <h4
+                style="
+                  text-align: left;
+                  padding-bottom: 5px;
+                  font-size: 1.2rem;
+                  font-weight: 600;
+                  color: #1f2937;
+                "
+              >
+                Group Services
+              </h4>
+              <p
+                style="
+                  text-align: left;
+                  font-size: 1rem;
+                  line-height: 1.6;
+                  color: #6b7280;
+                "
+              >
+                Grow with others in a supportive, guided environment. Group
+                coaching combines expert guidance with shared learning to help
+                you stay focused, motivated, and accountable.
+              </p>
+            </div>
+          </div>
+
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              padding: 20px;
+              border-radius: 8px;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+              border-top: 3px solid transparent;
+              transition: all 0.3s ease;
+              background-color: #ffffff;
+              cursor: pointer;
+            "
+            onmouseover="this.style.borderTopColor='#edadc7'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.15)'"
+            onmouseout="this.style.borderTopColor='transparent'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'"
+          >
+            <div
+              style="
+                display: flex;
+                justify-content: start;
+                padding-bottom: 10px;
+              "
+            >
+              <img
+                src="images/icons8-face-to-face-64.png"
+                alt=""
+                style="
+                  width: 50px;
+                  height: 50px;
+                  border-radius: 50%;
+                  background-color: #edadc7;
+                  padding: 8px;
+                "
+              />
+            </div>
+            <div>
+              <h4
+                style="
+                  text-align: left;
+                  padding-bottom: 5px;
+                  font-size: 1.2rem;
+                  font-weight: 600;
+                  color: #1f2937;
+                "
+              >
+                Cooperate Services
+              </h4>
+              <p
+                style="
+                  text-align: left;
+                  font-size: 1rem;
+                  line-height: 1.6;
+                  color: #6b7280;
+                "
+              >
+                Unlock your full potential with personalized, one-on-one
+                coaching designed to help you achieve your goals, overcome
+                obstacles, and grow with clarity and confidence.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer
+      style="
+        margin-top: 20px;
+        text-align: center;
+        background-color: #f9f9f9;
+        padding: 20px 0;
+        border-top: 1px solid #e5e5e5;
+      "
+    >
+      <div
+        class="container"
+        style="display: flex; justify-content: center; gap: 15px"
+      >
+        <a
+          href="https://www.linkedin.com/in/nafeesahhassan/"
+          target="_blank"
+          style="
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #edadc7;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          "
+          onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 6px 12px rgba(0,0,0,0.15)'"
+          onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px rgba(0,0,0,0.1)'"
+        >
+          <img
+            src="https://api.iconify.design/lucide:linkedin.svg"
+            alt="LinkedIn"
+            style="width: 24px; height: 24px"
+          />
+        </a>
+        <a
+          href="https://www.facebook.com/nafeesah.hassan"
+          target="_blank"
+          style="
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #edadc7;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          "
+          onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 6px 12px rgba(0,0,0,0.15)'"
+          onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px rgba(0,0,0,0.1)'"
+        >
+          <img
+            src="https://api.iconify.design/lucide:facebook.svg"
+            alt="Facebook"
+            style="width: 24px; height: 24px"
+          />
+        </a>
+        <a
+          href="https://x.com/"
+          target="_blank"
+          style="
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #edadc7;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          "
+          onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 6px 12px rgba(0,0,0,0.15)'"
+          onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px rgba(0,0,0,0.1)'"
+        >
+          <img
+            src="https://api.iconify.design/logos:x.svg"
+            alt="X"
+            style="width: 24px; height: 24px"
+          />
+        </a>
+        <a
+          href="https://www.instagram.com/virtsupport/"
+          target="_blank"
+          style="
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #edadc7;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          "
+          onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 6px 12px rgba(0,0,0,0.15)'"
+          onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px rgba(0,0,0,0.1)'"
+        >
+          <img
+            src="https://api.iconify.design/lucide:instagram.svg"
+            alt="Instagram"
+            style="width: 24px; height: 24px"
+          />
+        </a>
+      </div>
     </footer>
-</body>
+  </body>
+  <script>
+    function toggleMenu() {
+      const navLinks = document.querySelector(".nav-links");
+      navLinks.classList.toggle("show");
+    }
+  </script>
 </html>
